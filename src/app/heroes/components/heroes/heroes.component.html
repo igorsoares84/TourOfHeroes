@@ -1,15 +1,7 @@
 <h1>Meus herois</h1>
-<!--<ul class="heroes">
-   NGFOR USADO PARA EXIBIR OS NOMES DA LISTA DE HEROES
-  <li
-    *ngFor="let hero of heroes"
-    routerLink="/heroes/{{hero.id}}"
-  >
-    <span>{{ hero.id }}</span> {{ hero.nome }}
-  </li>
-  </ul> -- !>
-<! -- [HERO] variável do component Hero-Detalhes
-usada para setar os valores -->
+<div *ngIf="!heroes.length">
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</div>
 <mat-table [dataSource]="heroes" class="mat-elevation-z8">
   <!-- ID Definition -->
   <ng-container matColumnDef="id">

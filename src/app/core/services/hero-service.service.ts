@@ -1,36 +1,49 @@
+import { environment } from './../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Hero } from '../models/Hero.model';
 import { MensagemService } from './mensagem.service';
-import { HEROES } from './mock-hero';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroServiceService {
-  constructor(private mensagemService: MensagemService) {}
+  private API = environment.API;
 
-  // SERVICE -> TRATAMENTO DE DADOS, O COMPONENT APENAS EXIBE.
+  constructor(
+    private mensagemService: MensagemService,
+    private httpClient: HttpClient
+  ) {}
 
-  // Lista de heroi
-  // OBSERVABLE USADO PARA COMPARTILHAR OS DADOS DE FORMA ASSINCRONA,
-  // PARA RECEBER OS DADOS, DEVEMOS USAR O SUBCRIBE
+  // SERVICE -> FAZ A BUSCA DOS DADOS NO BACKEND, O COMPONENT APENAS EXIBE.
+
+  /* Lista de heroi
+     OBSERVABLE USADO PARA COMPARTILHAR OS DADOS DE FORMA ASSINCRONA,
+     PARA RECEBER OS DADOS, DEVEMOS USAR O SUBCRIBE.
+  */
+
+     // GET /HEROES
   getHeroes(): Observable<Hero[]> {
-    // of = CRIA O OBSERVABLE
-    const heroes = of(HEROES);
+    // CHAMADA PARA O SERVIDOR.
+    // TAP = Usado para executar efeitos colaterais para notificações do Observable
 
-    //return throwError(new Error('Servidor indisponível, tente novamente mais tarde.'))
-    return heroes;
+
+    return this.httpClient.get<Hero[]>(this.API).pipe(
+   //   tap((h) => this.log(`Quantidade de heróis encontrados: ${h.length}`))
+    );
   }
 
-  /* MÉTODO getHero busca somente um hero. Função FIND busca na lista de HEROES
-o parametro informado no método.
-A ! no fim da função significa que pode retornar um valor não encontrado. Devemos passar uma
-mensagem para o usuário.*/
+  //GET /HEROES/ID
 
   getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find((hero) => hero.id === id)!;
-    this.mensagemService.add(`Herói selecionado: ${hero.nome}`);
-    return of(hero);
+    // CHAMADA PARA O SERVIDOR.
+    return this.httpClient.get<Hero>(`${this.API}/${id}`).pipe(
+      tap((h) => this.log(`Herói selecionado: ${h.nome}`))
+    );
+  }
+
+  private log(mensagem: string): void {
+    this.mensagemService.add(mensagem);
   }
 }

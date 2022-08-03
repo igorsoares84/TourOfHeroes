@@ -20,8 +20,6 @@ export class HeroesComponent implements OnInit {
   // COLUNAS DA TABLE USADA NO TEMPLATE
   colunas: string[] = ['id', 'nome'];
 
-
-
   getHeroes(): void {
     /* SUBSCRIBE INFOMA QUANDO HÁ MUDANÇA NO OBSERVABLE
      ERROR INFORMA QUANDO HÁ UM ERRO AO TENTAR COLETAR OS DADOS
@@ -32,7 +30,7 @@ export class HeroesComponent implements OnInit {
         this.heroes = heroes;
       },
       (error) => {
-        alert(error);
+        alert('Servidor indisponível, tente mais tarde.');
       }
     );
   }

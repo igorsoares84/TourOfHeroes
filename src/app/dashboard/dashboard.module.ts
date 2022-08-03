@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../angular-material/material.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -16,6 +17,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     MaterialModule,
     DashboardRoutingModule,
     FlexLayoutModule,
+    MatProgressBarModule
 
 
 

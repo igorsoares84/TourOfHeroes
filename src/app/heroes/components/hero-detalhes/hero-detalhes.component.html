@@ -1,3 +1,7 @@
+<div *ngIf="!hero">
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</div>
+
 <div *ngIf="hero">
   <h1>{{ hero.nome | uppercase }} Detalhes:</h1>
 

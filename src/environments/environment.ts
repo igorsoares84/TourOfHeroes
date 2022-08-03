@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  /* CAMINHO COMPLETO DO SERV FOI CONFIG NO ARQUIVO proxy.conf.json
+  e adicionado a linha "proxyConfig": "src/proxy.conf.json" no arquivo
+  angular.json, linha 77*/
+  API: 'api/heroes'
 };
 
 /*
