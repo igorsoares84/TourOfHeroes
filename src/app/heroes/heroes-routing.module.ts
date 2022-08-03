@@ -8,8 +8,9 @@ HEROES/:ID = UMA VARIÁVEL QUE RECEBERÁ O VALOR DE IDENTIFICAÇÃO DO HERO.
 */
 
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'heroes/:id', component: HeroDetalhesComponent },
+   /* Path vazio pois foi implementado o Lazy Loading no app-routing*/
+  { path: '', component: HeroesComponent },
+  { path: ':id', component: HeroDetalhesComponent },
 ];
 
 /* DECLARAÇÃO EXPORT PRECISA SER COLOCADA PARA

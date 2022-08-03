@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroesComponent } from './components/heroes/heroes.component';
@@ -18,6 +19,7 @@ import { HeroesRoutingModule } from './heroes-routing.module';
     MaterialModule,
     HeroesRoutingModule,
     FormsModule,
+    FlexLayoutModule,
   ]
 })
 export class HeroesModule { }

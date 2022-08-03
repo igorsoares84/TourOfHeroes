@@ -22,11 +22,6 @@ import { HeroesModule } from './heroes/heroes.module';
     // APP
     AppRoutingModule,
     CoreModule,
-
-    // FEATURE
-    DashboardModule,
-    HeroesModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent],

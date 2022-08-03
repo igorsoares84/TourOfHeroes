@@ -10,12 +10,12 @@ import { RouterModule } from '@angular/router';
 import { MensagemComponent } from '../mensagem/mensagem.component';
 import { MaterialModule } from '../angular-material/material.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { Page404Component } from './components/page404.component';
 
 /* COMPONENTS SÓ PODEM SER DECLARADOS EM APENAS UM MÓDULO, PARA USAR EM OUTRO MÓDULO DEVERÁ
 EXPORTAR O MÓDULO DE ORIGEM E IMPORTAR NO MÓDULO DESTINO*/
 
-const COMPONENTS = [ToolbarComponent, MensagemComponent];
-
+const COMPONENTS = [ToolbarComponent, MensagemComponent, Page404Component];
 const MODULES = [CommonModule, MaterialModule, FlexLayoutModule, RouterModule];
 
 @NgModule({

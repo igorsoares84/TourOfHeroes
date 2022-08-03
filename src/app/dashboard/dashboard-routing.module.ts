@@ -7,7 +7,8 @@ HEROES/:ID = UMA VARIÁVEL QUE RECEBERÁ O VALOR DE IDENTIFICAÇÃO DO HERO.
 */
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  /* Path vazio pois foi implementado o Lazy Loading no app-routing*/
+  { path: '', component: DashboardComponent },
 ];
 
 /* DECLARAÇÃO EXPORT PRECISA SER COLOCADA PARA
