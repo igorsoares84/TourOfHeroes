@@ -1,22 +1,20 @@
-import { HeroDetalhesComponent } from './heroes/components/hero-detalhes/hero-detalhes.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroesComponent } from './heroes/components/heroes/heroes.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './dashboard.component';
 
 /* CONST DAS ROTAS USADAS PELA APLICAÇÃO
 HEROES/:ID = UMA VARIÁVEL QUE RECEBERÁ O VALOR DE IDENTIFICAÇÃO DO HERO.
 */
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 /* DECLARAÇÃO EXPORT PRECISA SER COLOCADA PARA
 O ROUTING CONSEGUIR EXPORTAR O PATH COM O COMPONENT
 */
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class DashboardRoutingModule {}

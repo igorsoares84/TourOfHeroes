@@ -8,7 +8,7 @@ import {
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { MensagemComponent } from '../mensagem/mensagem.component';
-import { MaterialModule } from './angular-material/material.module';
+import { MaterialModule } from '../angular-material/material.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 /* COMPONENTS SÓ PODEM SER DECLARADOS EM APENAS UM MÓDULO, PARA USAR EM OUTRO MÓDULO DEVERÁ
