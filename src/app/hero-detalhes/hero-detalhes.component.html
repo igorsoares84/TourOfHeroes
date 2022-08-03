@@ -1,0 +1,29 @@
+<div *ngIf="hero">
+  <h1>{{ hero.nome | uppercase }} Detalhes:</h1>
+
+  <mat-card>
+    <mat-card-content fxLayout="column">
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput disabled [value]="hero.id" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Herói</mat-label>
+        <!--NG MODEL PEGA O VALOR DO INPUT E COLOCA NA VARIAVEL ESPECIFICADA-->
+        <input
+          id="nome"
+          matInput
+          [(ngModel)]="hero.nome"
+          placeholder="Nome"
+          type="text"
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button matTooltip="Voltar" mat-mini-fab (click)="voltar()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

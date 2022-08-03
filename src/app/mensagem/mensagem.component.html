@@ -1,0 +1,25 @@
+<!-- NGIF = SE O GETMENSAGEM FOR TAMANHO 0 O RETURN É FALSE-->
+
+<mat-expansion-panel hideToggle *ngIf="mensagemService.getMensagem().length">
+  <mat-expansion-panel-header>
+    <mat-panel-title>Heróis</mat-panel-title>
+    <mat-panel-description
+      >{{
+        mensagemService.getMensagem().length
+      }}
+      registro(s)</mat-panel-description
+    >
+  </mat-expansion-panel-header>
+  <mat-list role="list" *ngFor="let mensagem of mensagemService.getMensagem()">
+    <mat-list-item role="listitem">{{ mensagem }}</mat-list-item>
+  </mat-list>
+  <button
+    class="btn_limpar"
+    [disabled]="!mensagemService.getMensagem().length"
+    color="warn"
+    mat-mini-fab
+    (click)="mensagemService.limpa()"
+  >
+    <mat-icon class="">delete</mat-icon>
+  </button>
+</mat-expansion-panel>

@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+  <!-- MATTOOLTIP MOSTRA A DESCRIÇÃO DO BUTTON-->
+  <!-- FXFLEX É DIRETIVA DO FLEXBOX, DO IMPORT FlexLayoutModule-->
+
+  <span fxFlex></span>
+  <button
+    mat-mini-fab
+    *ngFor="let menuItem of menuItens"
+    aria-label="menuItem.tooltipText"
+    [matTooltip]="menuItem.tooltipText"
+    [routerLink]="menuItem.routerLink"
+  >
+    <mat-icon>{{menuItem.icone}}</mat-icon>
+  </button>
+</mat-toolbar>

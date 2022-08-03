@@ -1,0 +1,32 @@
+<h1>Meus herois</h1>
+<!--<ul class="heroes">
+   NGFOR USADO PARA EXIBIR OS NOMES DA LISTA DE HEROES
+  <li
+    *ngFor="let hero of heroes"
+    routerLink="/heroes/{{hero.id}}"
+  >
+    <span>{{ hero.id }}</span> {{ hero.nome }}
+  </li>
+  </ul> -- !>
+<! -- [HERO] variável do component Hero-Detalhes
+usada para setar os valores -->
+<mat-table [dataSource]="heroes">
+  <!-- ID Definition -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+  </ng-container>
+
+  <!-- NOME Definition -->
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{ row.nome }} </mat-cell>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+  <mat-row
+    routerLink="/heroes/{{ row.id }}"
+    *matRowDef="let row; columns: colunas"
+  ></mat-row>
+</mat-table>

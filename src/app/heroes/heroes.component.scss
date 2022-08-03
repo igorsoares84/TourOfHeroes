@@ -1,0 +1,11 @@
+mat-row{
+  cursor: pointer;
+}
+
+mat-row:hover {
+  font-weight: bold;
+  background-color: whitesmoke;
+
+  transition: 0.2s;
+
+}
