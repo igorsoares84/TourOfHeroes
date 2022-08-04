@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../../core/models/Hero.model';
@@ -15,11 +14,12 @@ export class HeroDetalhesComponent implements OnInit {
   ! = SIGNIFICA QUE A VARIAVEL NÃO FOI INICIADA MAS QUE IRÁ RECEBER UM VALOR NO DECORRER DA APLICAÇÃO*/
 
   hero!: Hero;
+  editHero!: boolean;
 
   constructor(
     private heroService: HeroServiceService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,12 +29,32 @@ export class HeroDetalhesComponent implements OnInit {
   // O ROUTE ESPERA UM PARAMETRO ID SENDO STRING. NUMBER() FAZ A CONVERSÃO PARA NÚMERO.
 
   getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id).subscribe(hero =>
-      this.hero = hero);
+    const paramId = this.route.snapshot.paramMap.get('id');
+
+    if (paramId === 'new') {
+      this.editHero = false;
+      this.hero = {nome: ''} as Hero;
+    } else {
+      this.editHero = true;
+      const id = Number(paramId);
+      this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+    }
   }
 
-  voltar(): void{
+  voltar(): void {
     this.router.navigate(['/heroes']);
+  }
+
+  atualizar(): void {
+    this.heroService
+      .updateHero(this.hero)
+      .subscribe(() => this.router.navigate(['/heroes']));
+  }
+
+  criar(): void {
+    this.heroService
+      .createHero(this.hero)
+      .subscribe(() => this.router.navigate(['/heroes']));
+
   }
 }

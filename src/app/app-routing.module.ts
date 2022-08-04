@@ -25,7 +25,7 @@ const routes: Routes = [
   /* PÁGINA 404 */
   {
     path: '**', component: Page404Component
-  }
+  },
 ];
 
 /* DECLARAÇÃO EXPORT PRECISA SER COLOCADA PARA

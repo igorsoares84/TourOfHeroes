@@ -1,12 +1,40 @@
 {
   "heroes": [
-    { "id": 1, "nome": "Iron Man" },
-    { "id": 2, "nome": "Homem Aranha" },
-    { "id": 3, "nome": "Cap América" },
-    { "id": 4, "nome": "Hulk" },
-    { "id": 5, "nome": "Batman" },
-    { "id": 6, "nome": "Robin" },
-    { "id": 7, "nome": "Dr. Estranho" },
-    { "id": 8, "nome": "Coisa" }
+    {
+      "id": 1,
+      "nome": "Iron Man"
+    },
+    {
+      "id": 2,
+      "nome": "Capitão América"
+    },
+    {
+      "id": 3,
+      "nome": "Mulher gato"
+    },
+    {
+      "id": 4,
+      "nome": "Hulk"
+    },
+    {
+      "id": 5,
+      "nome": "Batman"
+    },
+    {
+      "id": 6,
+      "nome": "Robin"
+    },
+    {
+      "id": 7,
+      "nome": "Coisa"
+    },
+    {
+      "id": 8,
+      "nome": "Coisa"
+    },
+    {
+      "nome": "Igor",
+      "id": 9
+    }
   ]
 }

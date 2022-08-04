@@ -1,7 +1,12 @@
-<h1>Meus herois</h1>
-<div *ngIf="!heroes.length">
-  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+<div class="btn">
+  <button class="btn_add"
+    mat-mini-fab matTooltip="Adicionar herói"
+    [routerLink]="['new']"
+    >
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
+
 <mat-table [dataSource]="heroes" class="mat-elevation-z8">
   <!-- ID Definition -->
   <ng-container matColumnDef="id">

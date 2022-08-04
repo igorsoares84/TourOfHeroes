@@ -1,3 +1,4 @@
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { CommonModule } from '@angular/common';
 import {
   ModuleWithComponentFactories,
@@ -11,18 +12,37 @@ import { MensagemComponent } from '../mensagem/mensagem.component';
 import { MaterialModule } from '../angular-material/material.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { Page404Component } from './components/page404.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 /* COMPONENTS SÓ PODEM SER DECLARADOS EM APENAS UM MÓDULO, PARA USAR EM OUTRO MÓDULO DEVERÁ
 EXPORTAR O MÓDULO DE ORIGEM E IMPORTAR NO MÓDULO DESTINO*/
 
-const COMPONENTS = [ToolbarComponent, MensagemComponent, Page404Component];
-const MODULES = [CommonModule, MaterialModule, FlexLayoutModule, RouterModule];
+const COMPONENTS = [ToolbarComponent, MensagemComponent, Page404Component, LoadingComponent];
+const MODULES = [
+  CommonModule,
+  MaterialModule,
+  FlexLayoutModule,
+  RouterModule,
+  MatProgressSpinnerModule,
+
+];
 
 @NgModule({
   declarations: [COMPONENTS],
   imports: [MODULES],
   /* COMPONENTS FOI EXPORTADO PARA UTILIZAÇÃO EM OUTROS MODULOS*/
   exports: [MaterialModule, COMPONENTS],
+
+  // Adicionando o Interceptor nos services.
+  providers:[
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    }
+  ]
 })
 export class CoreModule {
   /* IMPEDINDO QUE O CORE MODULE SEJA IMPORTADO, SUGERINDO A IMPORTAÇÃO DO
