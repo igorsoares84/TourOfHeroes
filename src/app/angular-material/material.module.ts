@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const MODULES = [
   MatToolbarModule,
@@ -20,6 +20,7 @@ const MODULES = [
   MatListModule,
   MatInputModule,
   MatTableModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

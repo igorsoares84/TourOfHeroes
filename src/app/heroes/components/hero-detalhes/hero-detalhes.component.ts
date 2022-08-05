@@ -1,4 +1,6 @@
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../../core/models/Hero.model';
 import { HeroServiceService } from '../../../core/services/hero-service.service';
@@ -14,12 +16,23 @@ export class HeroDetalhesComponent implements OnInit {
   ! = SIGNIFICA QUE A VARIAVEL NÃO FOI INICIADA MAS QUE IRÁ RECEBER UM VALOR NO DECORRER DA APLICAÇÃO*/
 
   hero!: Hero;
-  editHero!: boolean;
+  editHero = false;
+
+  /* CONFIGURANDO OS FORMULARIOS COM FORM BUILDER*/
+
+  form = this.fb.group({
+    // ID começará com vazio e estará desabilitado.
+    id: { value: 0, disabled: true },
+    // Para o form se tornar válido, o nome precisará ser preenchido.
+    nome: ['', Validators.required],
+  });
 
   constructor(
+    private fb: FormBuilder,
     private heroService: HeroServiceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -31,13 +44,15 @@ export class HeroDetalhesComponent implements OnInit {
   getHero(): void {
     const paramId = this.route.snapshot.paramMap.get('id');
 
-    if (paramId === 'new') {
-      this.editHero = false;
-      this.hero = {nome: ''} as Hero;
-    } else {
+    if (paramId !== 'new') {
       this.editHero = true;
+
       const id = Number(paramId);
-      this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+      this.heroService.getHero(id).subscribe((hero) => {
+        this.hero = hero;
+        this.form.controls.id.setValue(hero.id);
+        this.form.controls.nome.setValue(hero.nome);
+      });
     }
   }
 
@@ -46,15 +61,40 @@ export class HeroDetalhesComponent implements OnInit {
   }
 
   atualizar(): void {
-    this.heroService
-      .updateHero(this.hero)
-      .subscribe(() => this.router.navigate(['/heroes']));
+    const { valid, value } = this.form;
+
+    if (valid) {
+      const hero: Hero = {
+        id: this.hero.id,
+        nome: value.nome || '',
+      };
+
+      this.heroService
+        .updateHero(hero)
+        .subscribe(() => this.router.navigate(['/heroes']));
+    }
+    this.snackMensagem('Herói atualizado com sucesso!');
   }
 
   criar(): void {
-    this.heroService
-      .createHero(this.hero)
-      .subscribe(() => this.router.navigate(['/heroes']));
+    const { valid, value } = this.form;
 
+    if (valid) {
+      const hero: Hero = {
+        nome: value.nome || '',
+      } as Hero;
+
+      this.heroService
+        .createHero(hero)
+        .subscribe(() => this.router.navigate(['/heroes']));
+    }
+    this.snackMensagem('Herói adicionado com sucesso!');
+  }
+
+  private snackMensagem(mensagem: string): void {
+    this.snackBar.open(mensagem, '', {
+      duration: 3000,
+      verticalPosition: 'top',
+    });
   }
 }

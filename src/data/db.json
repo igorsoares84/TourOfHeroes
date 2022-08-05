@@ -35,6 +35,14 @@
     {
       "nome": "Igor",
       "id": 9
+    },
+    {
+      "id": 10,
+      "nome": "Arrow Green"
+    },
+    {
+      "nome": "Novo herói",
+      "id": 11
     }
   ]
 }

@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { MaterialModule } from '../angular-material/material.module';
 import { HeroDetalhesComponent } from './components/hero-detalhes/hero-detalhes.component';
-import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule } from '@angular/forms';
 import { HeroesRoutingModule } from './heroes-routing.module';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [HeroesComponent, HeroDetalhesComponent],
@@ -15,10 +13,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CommonModule,
     MaterialModule,
     HeroesRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
-    MatProgressBarModule,
-    MatExpansionModule,
   ],
 })
 export class HeroesModule {}
