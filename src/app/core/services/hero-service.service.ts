@@ -40,13 +40,13 @@ export class HeroServiceService {
   getHero(id: number): Observable<Hero> {
     // CHAMADA PARA O SERVIDOR.
     return this.httpClient
-      .get<Hero>(`${this.API}/${id}`)
+      .get<Hero>(this.getUrl(id))
       .pipe(tap((h) => this.log(`Herói selecionado: ${h.nome}`)));
   }
 
   updateHero(hero: Hero): Observable<Hero> {
     return this.httpClient
-      .put<Hero>(`${this.API}/${hero.id}`, hero)
+      .put<Hero>(this.getUrl(hero.id), hero)
       .pipe(
         tap(() =>
           this.log(`Atualização de nome para o herói com o Id: ${hero.id}`)
@@ -57,14 +57,24 @@ export class HeroServiceService {
   createHero(hero: Hero): Observable<Hero> {
     return this.httpClient
       .post<Hero>(this.API, hero)
+      .pipe(tap(() => this.log(`Herói adicionado: ${hero.nome}`)));
+  }
+
+  deleteHero(hero: Hero): Observable<any> {
+    return this.httpClient
+      .delete<any>(this.getUrl(hero.id))
       .pipe(
         tap(() =>
-          this.log(`Herói adicionado: ${hero.nome}`)
+          this.mensagemService.add(`Herói ${hero.nome} deletado com sucesso.`)
         )
       );
   }
 
   private log(mensagem: string): void {
     this.mensagemService.add(mensagem);
+  }
+
+  private getUrl(id: number): string {
+    return `${this.API}/${id}`;
   }
 }

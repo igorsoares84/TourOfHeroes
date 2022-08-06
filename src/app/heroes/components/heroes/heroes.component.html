@@ -1,8 +1,10 @@
 <div class="btn">
-  <button class="btn_add"
-    mat-mini-fab matTooltip="Adicionar herói"
+  <button
+    class="btn_add"
+    mat-mini-fab
+    matTooltip="Adicionar herói"
     [routerLink]="['new']"
-    >
+  >
     <mat-icon>add</mat-icon>
   </button>
 </div>
@@ -18,6 +20,22 @@
   <ng-container matColumnDef="nome">
     <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
     <mat-cell *matCellDef="let row"> {{ row.nome }} </mat-cell>
+  </ng-container>
+
+  <!-- Ação Definition -->
+  <!--$event.stopPropagation = QUANDO EU CLICAR NO BOTÃO, NADA
+  QUE ESTEJA FORA DO BUTTON VAI SER EXECUTADO -->
+  <ng-container matColumnDef="acao">
+    <mat-header-cell *matHeaderCellDef> Ação </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button
+        mat-icon-button
+        matTooltip="Apagar herói"
+        (click)="deleteHero(row); $event.stopPropagation()"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
   </ng-container>
 
   <!-- Header and Row Declarations -->

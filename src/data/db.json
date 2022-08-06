@@ -17,10 +17,6 @@
       "nome": "Hulk"
     },
     {
-      "id": 5,
-      "nome": "Batman"
-    },
-    {
       "id": 6,
       "nome": "Robin"
     },
@@ -33,16 +29,8 @@
       "nome": "Coisa"
     },
     {
-      "nome": "Igor",
-      "id": 9
-    },
-    {
       "id": 10,
       "nome": "Arrow Green"
-    },
-    {
-      "nome": "Novo herói",
-      "id": 11
     }
   ]
 }

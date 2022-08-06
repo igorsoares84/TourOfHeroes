@@ -1,0 +1,26 @@
+<mat-dialog-content>
+  <p class="mat-body-1">{{ data.conteudo }}</p>
+</mat-dialog-content>
+
+<!--MAT-DIALOG-CLOSE RETORNA O BOOLEAN PARA O MÉTODO QUE ESTÁ INVOCANDO ELE.
+NO CASO SE CLICAR EM CONFIRMAR, RETORNA TRUE. SE CLICAR EM CANCELAR OU FORA DO
+DIALOG, ELE RETORNA FALSE-->
+<mat-dialog-actions align="end">
+  <button
+    mat-icon-button
+    mat-mini-fab
+    matTooltip="Cancelar"
+    [mat-dialog-close]="false">
+    <mat-icon>close</mat-icon>
+    {{ data.cancelar }}
+  </button>
+
+  <button
+    mat-icon-button
+    mat-mini-fab
+    matTooltip="Confirmar"
+    [mat-dialog-close]="true">
+    <mat-icon>check</mat-icon>
+    {{ data.confirmar }}
+  </button>
+</mat-dialog-actions>

@@ -11,6 +11,8 @@ import { Page404Component } from './components/page404.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 /* COMPONENTS SÓ PODEM SER DECLARADOS EM APENAS UM MÓDULO, PARA USAR EM OUTRO MÓDULO DEVERÁ
 EXPORTAR O MÓDULO DE ORIGEM E IMPORTAR NO MÓDULO DESTINO*/
@@ -20,6 +22,7 @@ const COMPONENTS = [
   MensagemComponent,
   Page404Component,
   LoadingComponent,
+  DialogComponent,
 ];
 const MODULES = [
   CommonModule,
@@ -27,13 +30,14 @@ const MODULES = [
   FlexLayoutModule,
   RouterModule,
   MatProgressSpinnerModule,
+  MatDialogModule,
 ];
 
 @NgModule({
   declarations: [COMPONENTS],
   imports: [MODULES],
   /* COMPONENTS FOI EXPORTADO PARA UTILIZAÇÃO EM OUTROS MODULOS*/
-  exports: [MaterialModule, COMPONENTS],
+  exports: [MODULES, COMPONENTS],
 
   // Adicionando o Interceptor nos services.
   providers: [

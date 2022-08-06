@@ -1,6 +1,20 @@
-mat-row{
+mat-row {
   cursor: pointer;
 }
+
+.mat-column-id {
+
+  max-width: 60px;
+
+}
+
+.mat-column-acao {
+
+  max-width: 60px;
+
+}
+
+
 
 mat-row:hover {
   font-weight: bold;
@@ -10,7 +24,7 @@ mat-row:hover {
 
 }
 
-.btn{
+.btn {
   margin-bottom: 20px;
   display: flex;
   justify-content: flex-end;
