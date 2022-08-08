@@ -3,5 +3,5 @@ export const environment = {
   /* CAMINHO COMPLETO DO SERV FOI CONFIG NO ARQUIVO proxy.conf.json
   e adicionado a linha "proxyConfig": "src/proxy.conf.json" no arquivo
   angular.json, linha 77*/
-  API: 'https://toh-json-server-api.herokuapp.com/api'
+  API: 'https://curso-tour-of-heroes-api.herokuapp.com/api/heroes'
 };
