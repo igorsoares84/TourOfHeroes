@@ -24,7 +24,7 @@ export class HeroDetalhesComponent implements OnInit {
     // ID começará com vazio e estará desabilitado.
     id: { value: 0, disabled: true },
     // Para o form se tornar válido, o nome precisará ser preenchido.
-    nome: ['', Validators.required],
+    name: ['', Validators.required],
   });
 
   constructor(
@@ -51,7 +51,7 @@ export class HeroDetalhesComponent implements OnInit {
       this.heroService.getHero(id).subscribe((hero) => {
         this.hero = hero;
         this.form.controls.id.setValue(hero.id);
-        this.form.controls.nome.setValue(hero.nome);
+        this.form.controls.name.setValue(hero.name);
       });
     }
   }
@@ -66,7 +66,7 @@ export class HeroDetalhesComponent implements OnInit {
     if (valid) {
       const hero: Hero = {
         id: this.hero.id,
-        nome: value.nome || '',
+        name: value.name || '',
       };
 
       this.heroService
@@ -81,7 +81,7 @@ export class HeroDetalhesComponent implements OnInit {
 
     if (valid) {
       const hero: Hero = {
-        nome: value.nome || '',
+        name: value.name || '',
       } as Hero;
 
       this.heroService

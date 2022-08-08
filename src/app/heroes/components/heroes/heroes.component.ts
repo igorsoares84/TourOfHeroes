@@ -46,7 +46,7 @@ export class HeroesComponent implements OnInit {
     const dialogData: DialogData = {
       cancelar: '',
       confirmar: '',
-      conteudo: `Deseja fazer a exclusão do herói ${hero.nome}?`,
+      conteudo: `Deseja fazer a exclusão do herói ${hero.name}?`,
     };
 
     // Referencia ao dialog que será aberto.

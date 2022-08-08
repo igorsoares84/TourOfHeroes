@@ -41,7 +41,7 @@ export class HeroServiceService {
     // CHAMADA PARA O SERVIDOR.
     return this.httpClient
       .get<Hero>(this.getUrl(id))
-      .pipe(tap((h) => this.log(`Herói selecionado: ${h.nome}`)));
+      .pipe(tap((h) => this.log(`Herói selecionado: ${h.name}`)));
   }
 
   // GET heroes?search=termo
@@ -81,7 +81,7 @@ export class HeroServiceService {
   createHero(hero: Hero): Observable<Hero> {
     return this.httpClient
       .post<Hero>(this.API, hero)
-      .pipe(tap(() => this.log(`Herói adicionado: ${hero.nome}`)));
+      .pipe(tap(() => this.log(`Herói adicionado: ${hero.name}`)));
   }
 
   // DELETE /heroes/id
@@ -90,7 +90,7 @@ export class HeroServiceService {
       .delete<any>(this.getUrl(hero.id))
       .pipe(
         tap(() =>
-          this.mensagemService.add(`Herói ${hero.nome} deletado com sucesso.`)
+          this.mensagemService.add(`Herói ${hero.name} deletado com sucesso.`)
         )
       );
   }

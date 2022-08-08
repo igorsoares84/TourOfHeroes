@@ -2,35 +2,35 @@
   "heroes": [
     {
       "id": 1,
-      "nome": "Iron Man"
+      "name": "Iron Man"
     },
     {
       "id": 2,
-      "nome": "Capitão América"
+      "name": "Capitão América"
     },
     {
-      "id": 3,
-      "nome": "Mulher gato"
+      "name": "Homem Aranha",
+      "id": 3
     },
     {
       "id": 4,
-      "nome": "Hulk"
+      "name": "Hulk"
     },
     {
       "id": 6,
-      "nome": "Robin"
+      "name": "Robin"
     },
     {
       "id": 7,
-      "nome": "Coisa"
+      "name": "Coisa"
     },
     {
       "id": 10,
-      "nome": "Arrow Green"
+      "name": "Arrow Green"
     },
     {
       "id": 11,
-      "nome": "Mutano"
+      "name": "Mutano"
     }
   ]
 }

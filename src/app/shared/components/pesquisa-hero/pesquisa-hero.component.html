@@ -28,7 +28,7 @@
     (optionSelected)="onSelected($event);search.value = ''"
   >
     <mat-option *ngFor="let hero of heroes$ | async" [value]="hero">
-      {{ hero.nome }}
+      {{ hero.name }}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

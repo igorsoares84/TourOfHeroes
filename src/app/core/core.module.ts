@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 /* COMPONENTS SÓ PODEM SER DECLARADOS EM APENAS UM MÓDULO, PARA USAR EM OUTRO MÓDULO DEVERÁ
 EXPORTAR O MÓDULO DE ORIGEM E IMPORTAR NO MÓDULO DESTINO*/
@@ -53,6 +54,11 @@ const MODULES = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true,
     },
   ],
