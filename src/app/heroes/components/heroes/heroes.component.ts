@@ -3,7 +3,8 @@ import { DialogData } from './../../../core/models/dialog-data.model';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Hero } from '../../../core/models/Hero.model';
-import { HeroServiceService } from '../../../core/services/hero-service.service';
+import { HeroServiceService } from '../../../core/services/hero.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -11,7 +12,7 @@ import { HeroServiceService } from '../../../core/services/hero-service.service'
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesComponent implements OnInit {
-  constructor(private service: HeroServiceService, private dialog: MatDialog) {}
+  constructor(private service: HeroServiceService, private dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     // ATRIBUINDO O SERVICE A LISTA DE HEROES
@@ -66,4 +67,9 @@ export class HeroesComponent implements OnInit {
       }
     });
   }
+
+  onSelected(hero: Hero): void{
+    this.router.navigate(['/heroes', hero.id]);
+  }
+
 }

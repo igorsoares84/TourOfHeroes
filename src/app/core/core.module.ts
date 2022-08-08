@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { CommonModule } from '@angular/common';
@@ -13,6 +14,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 /* COMPONENTS SÓ PODEM SER DECLARADOS EM APENAS UM MÓDULO, PARA USAR EM OUTRO MÓDULO DEVERÁ
 EXPORTAR O MÓDULO DE ORIGEM E IMPORTAR NO MÓDULO DESTINO*/
@@ -31,6 +33,8 @@ const MODULES = [
   RouterModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+  SharedModule,
+  MatAutocompleteModule,
 ];
 
 @NgModule({

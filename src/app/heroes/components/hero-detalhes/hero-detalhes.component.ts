@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../../core/models/Hero.model';
-import { HeroServiceService } from '../../../core/services/hero-service.service';
+import { HeroServiceService } from '../../../core/services/hero.service';
 
 @Component({
   selector: 'app-hero-detalhes',

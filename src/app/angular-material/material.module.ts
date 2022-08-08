@@ -1,3 +1,4 @@
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -23,6 +24,7 @@ const MODULES = [
   MatTableModule,
   MatSnackBarModule,
   MatDialogModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

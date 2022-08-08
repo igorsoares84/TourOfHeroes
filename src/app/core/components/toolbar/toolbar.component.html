@@ -4,6 +4,7 @@
   <!-- FXFLEX É DIRETIVA DO FLEXBOX, DO IMPORT FlexLayoutModule-->
 
   <span fxFlex></span>
+
   <button
     mat-mini-fab
     *ngFor="let menuItem of menuItens"
@@ -11,6 +12,6 @@
     [matTooltip]="menuItem.tooltipText"
     [routerLink]="menuItem.routerLink"
   >
-    <mat-icon>{{menuItem.icone}}</mat-icon>
+    <mat-icon>{{ menuItem.icone }}</mat-icon>
   </button>
 </mat-toolbar>

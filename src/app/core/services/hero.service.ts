@@ -1,7 +1,7 @@
-import { environment } from './../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { Hero } from '../models/Hero.model';
 import { MensagemService } from './mensagem.service';
 
@@ -44,6 +44,28 @@ export class HeroServiceService {
       .pipe(tap((h) => this.log(`Herói selecionado: ${h.nome}`)));
   }
 
+  // GET heroes?search=termo
+  search(termo: string): Observable<Hero[]> {
+    if (!termo.trim()) {
+
+      // SE O TERMO FOR VAZIO, RETORNARÁ UM ARRAY VAZIO
+      return of([]);
+    }
+
+    return this.httpClient
+      .get<Hero[]>(`${this.API}?nome=${termo}`)
+      .pipe(
+        tap((heroes) =>
+          heroes.length
+            ? this.log(`Encontrado(s) ${heroes.length} compatível com: ${termo}`)
+            : this.log(
+                `Não foi encontrado nenhum herói compatível com: ${termo}`
+              )
+        )
+      );
+  }
+
+  //PUT /heroes/id
   updateHero(hero: Hero): Observable<Hero> {
     return this.httpClient
       .put<Hero>(this.getUrl(hero.id), hero)
@@ -54,12 +76,15 @@ export class HeroServiceService {
       );
   }
 
+  // POST /heroes/new
+
   createHero(hero: Hero): Observable<Hero> {
     return this.httpClient
       .post<Hero>(this.API, hero)
       .pipe(tap(() => this.log(`Herói adicionado: ${hero.nome}`)));
   }
 
+  // DELETE /heroes/id
   deleteHero(hero: Hero): Observable<any> {
     return this.httpClient
       .delete<any>(this.getUrl(hero.id))

@@ -1,0 +1,34 @@
+<mat-form-field appearance="fill" class="input-width">
+  <!--Label recebe o valor que será colocado como placeholder no campo de pesquisa,
+  valor informado no Dashboard html-->
+  <mat-label>{{ label }}</mat-label>
+  <!--(input) coleta cada letra digitada no #search e lança no método pesquisa
+  para trazer o AutoComplete-->
+  <input
+    matInput
+    [matAutocomplete]="auto"
+    #search
+    type="text"
+    (input)="pesquisa(search.value)"
+
+  />
+  <button
+    mat-icon-button
+    matSuffix
+    *ngIf="search.value"
+    (click)="search.value = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  <!--ASYNC é basicamente um subcribe, ele traz os valores
+  emitidos pelo Observable-->
+  <!--O hero selecionado vai entrar no onSelected($event)-->
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="onSelected($event);search.value = ''"
+  >
+    <mat-option *ngFor="let hero of heroes$ | async" [value]="hero">
+      {{ hero.nome }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
