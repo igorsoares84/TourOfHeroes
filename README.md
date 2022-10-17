@@ -8,4 +8,6 @@ Para instalar os módulos do nodeJS, abra um terminal na sua IDE e rode o comand
 
 Para conseguir rodar a aplicação junto com o servidor fictício (JSON-Server) abra o terminal e rode o comando "npm run backend". Após isso, abra uma nova guia no seu terminal e rode o comando "ng serve" ou "ng s -o".
 
+### Deploy
+
 Você também pode acessar o deploy no link http://tour-of-heroes-pi.vercel.app. Na lista de heroes vocês conseguem adicionar quantos heróis desejarem.
