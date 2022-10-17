@@ -1,4 +1,8 @@
+# Tour of Heroes
+
 Projeto feito com o Angular version 14.1.0.
+
+## Execução
 
 Para instalar os módulos do nodeJS, abra um terminal na sua IDE e rode o comando "npm install" certifique-se que esteja na pasta raiz do projeto.
 
